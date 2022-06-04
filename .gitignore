@@ -1,0 +1,7 @@
+# Configuration Files
+*.json
+
+# Visual Studio Files
+
+# Python Files
+*.pyc
