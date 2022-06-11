@@ -1,6 +1,8 @@
+from Features.Tools.validateEmbedFields import validateEmbedFields
 from datetime import datetime
 from discord import Embed, Colour
-from Funcionalidades.Ferramentas.ValidateEmbedFields import validateEmbedFields
+
+
 async def makeEmbed(
     title:str,                      # Needed.
     description:str,                # Needed.

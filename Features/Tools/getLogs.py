@@ -1,6 +1,7 @@
 from discord import Client
-from Funcionalidades.Ferramentas.MakeEmbed import makeEmbed
+from Features.Tools.makeEmbed import makeEmbed
 import datetime
+
 
 async def logsFabric(
     client:Client, IdChanneLogs:int,
@@ -37,3 +38,4 @@ async def logsFabric(
         fields = log
     )
     await ChannelLog.send(embed=newEmbed)
+    return

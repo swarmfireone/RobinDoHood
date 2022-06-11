@@ -1,0 +1,4 @@
+Arquivos de features da aplicação, tais como:
+
+    Tools (Ferramentas) - usadas para criar funcionalidades, a fim de centralizar o uso de funções que serem repetidas milhares de vezes e permitir ganho (ou perca) de processamento em refatorações únicas, com o risco de se algo der errado, ROLLBACK !
+    Behaviors (Comportamentos) - as funcionalidades, o comportamento da aplicação. Não devem fazer nenhuma atividade demasiada complexa ou que possa ser repetida por diversas vezes nesse ou noutro Behavior, pois essa é a definição de uma Tool.

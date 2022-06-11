@@ -1,44 +1,31 @@
-import json
-with open('Componentes/Secrets/Secrets.json', 'r') as secrets_json:
-    SecretsJson = json.load(secrets_json)
-    # Declaração de variáveis
-    TokenRobinDoHood = str(SecretsJson["TokenRobinDoHood"])
-    IdServerOficial = int(SecretsJson["IdServerOficial"])
-    IdServerTeste = int(SecretsJson["IdServerTeste"])
-    IdChannelLogs = int(SecretsJson["IdChannelLogs"])
-    IdContaSwarmfire = int(SecretsJson["IdContaSwarmfire"])
-    IdContaDevpobrerico = int(SecretsJson["IdContaDevpobrerico"])
-    
-    # Verificação se os dados foram encontrados e carregados
-    if IdContaSwarmfire != 484053771203379210:
-        print('Inconsistência nos dados das Secrets, parando aplicação.')
-        exit()
-    
-    secrets_json.close()
-
-
-
-# Funções
-
-
+from Domain.Connection.DiscordBot.Secrets.GetSecrets import Secrets
 import discord, tracemalloc
-# Funções
-from Componentes.Logs.GetLogs import logsFabric
-from Funcionalidades.Ferramentas.ValidateGuild import validateGuild
-from Funcionalidades.Ferramentas.EmbedWithinContent import embedWithinContent
+from Features.Tools.getLogs import logsFabric
+from Features.Tools.embedWithinContent import embedWithinContent
+from Features.Tools.validateGuild import validateGuild
 
 
+# Secrets Data
+SecretsData = Secrets('C:/Users/Pichau/Desktop/Python/Area_de_Testes/Programas/Discord/BatCaverna/Robin-do-Hood/RobinDoHood/Domain/Connection/DiscordBot/Secrets/Secrets.json')
+Token_DiscordBot = SecretsData.returnToken_DiscordBot().Token()
+Server_OficialServer = SecretsData.returnId_Server_OficialServer()
+Server_TestServer = SecretsData.returnId_Server_TestServer()
+Id_ChannelLogs = SecretsData.returnId_Channel_Logs()
+Id_UserAdministrator = SecretsData.returnId_User_Administrator()
+
+
+# Initialize Discord Bot and Define Behaviors
 Client = discord.Client(command_prefix='>')
 
 @Client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(Client))
     await logsFabric(
-        Client, IdChannelLogs,
+        Client, Id_ChannelLogs.Id,
         'Client connected with success', '#Success',
         'Logged in as user', f'{Client.user}\nwith id \n{Client.user.id}'
     )
-
+    
 @Client.event
 async def on_message(message):
     GuildName = message.guild
@@ -50,10 +37,10 @@ async def on_message(message):
     Content = message.content
     Embeds = await embedWithinContent(message.embeds)
     
-    if await validateGuild(GuildId, IdServerTeste):
+    if await validateGuild(GuildId, Server_TestServer.Id):
         if message.author != Client.user:
             await logsFabric(
-                Client, IdChannelLogs,
+                Client, Id_ChannelLogs.Id,
                 'GuildName', GuildName,
                 'GuildId', GuildId,
                 'ChannelName', ChannelName,
@@ -67,7 +54,7 @@ async def on_message(message):
             if message.content.startswith('$hello'):
                 await message.channel.send('Hello!')
                 return
-        
 
 
-Client.run(TokenRobinDoHood)
+# Run Discord Bot
+Client.run(Token_DiscordBot)

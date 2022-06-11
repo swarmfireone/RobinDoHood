@@ -1,0 +1,5 @@
+Arquivos de domínio da aplicação, tais como:
+
+    Interfaces - a serem assinadas
+    Dados de Conexão - para com o bot ou outros serviços externos
+    Exceptions - exceções personalizadas para facilitar o Debug e leitura do código. E futura escalabilidade
