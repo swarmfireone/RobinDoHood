@@ -1,8 +1,9 @@
 from Domain.Connection.DiscordBot.Secrets.GetSecrets import Secrets
 import discord, tracemalloc
-from Features.Tools.getLogs import logsFabric
-from Features.Tools.embedWithinContent import embedWithinContent
-from Features.Tools.validateGuild import validateGuild
+from Features.Tools.Discord.readAttachments import readAttachments
+from Features.Tools.Utils.getLogs import logsFabric
+from Features.Tools.Discord.embedWithinContent import embedWithinContent
+from Features.Tools.Utils.validateGuild import validateGuild
 
 
 # Secrets Data
@@ -35,6 +36,7 @@ async def on_message(message):
     Author = message.author
     AuthorId = message.author.id
     Content = message.content
+    Attachment = await readAttachments(message.attachments)
     Embeds = await embedWithinContent(message.embeds)
     
     if await validateGuild(GuildId, Server_TestServer.Id):
@@ -48,6 +50,7 @@ async def on_message(message):
                 'Author', Author,
                 'AuthorId', AuthorId,
                 'Content', Content,
+                'Attachment', 
                 'Embeds', Embeds['embeds']
             )
             

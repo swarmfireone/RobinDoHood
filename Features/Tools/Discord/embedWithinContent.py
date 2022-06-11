@@ -1,3 +1,6 @@
+from discord import Embed
+
+
 async def embedWithinContent(
     list_of_embeds
 ) -> dict:

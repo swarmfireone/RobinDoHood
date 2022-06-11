@@ -1,4 +1,4 @@
-from Features.Tools.validateEmbedFields import validateEmbedFields
+from Features.Tools.Utils.validateEmbedFields import validateEmbedFields
 from datetime import datetime
 from discord import Embed, Colour
 
