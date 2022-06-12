@@ -2,11 +2,11 @@ from discord import Embed
 
 
 async def embedWithinContent(
-    list_of_embeds
+    _ListOf_Embeds
 ) -> dict:
     # Lê as informações do message.embeds
     listOfEmbeds = []
-    for embed in list_of_embeds:
+    for embed in _ListOf_Embeds:
         if embed.Empty != True:
             listOfEmbeds.append(
                 {

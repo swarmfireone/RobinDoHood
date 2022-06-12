@@ -4,24 +4,24 @@ import datetime
 
 
 async def logsFabric(
-    client:Client, IdChanneLogs:int,
-    arg1, value1,
-    arg2 = None, value2 = None,
-    arg3 = None, value3 = None,
-    arg4 = None, value4 = None,
-    arg5 = None, value5 = None,
-    arg6 = None, value6 = None,
-    arg7 = None, value7 = None,
-    arg8 = None, value8 = None,
-    arg9 = None, value9 = None,
-    arg10 = None, value10 = None,
-    arg11 = None, value11 = None,
-    arg12 = None, value12 = None,
-    arg13 = None, value13 = None,
-    arg14 = None, value14 = None
+    _Client:Client, _Id_Channel_Logs:int,
+    _Arg1, _Value1,
+    _Arg2 = None, _Value2 = None,
+    _Arg3 = None, _Value3 = None,
+    _Arg4 = None, _Value4 = None,
+    _Arg5 = None, _Value5 = None,
+    _Arg6 = None, _Value6 = None,
+    _Arg7 = None, _Value7 = None,
+    _Arg8 = None, _Value8 = None,
+    _Arg9 = None, _Value9 = None,
+    _Arg10 = None, _Value10 = None,
+    _Arg11 = None, _Value11 = None,
+    _Arg12 = None, _Value12 = None,
+    _Arg13 = None, _Value13 = None,
+    _Arg14 = None, _Value14 = None
 ) -> None:
-    args = [arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14]
-    values = [value1, value2, value3, value4, value5, value6, value7, value8, value8, value9, value10, value11, value12, value13, value14]
+    args = [_Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14]
+    values = [_Value1, _Value2, _Value3, _Value4, _Value5, _Value6, _Value7, _Value8, _Value8, _Value9, _Value10, _Value11, _Value12, _Value13, _Value14]
     log = []
     for argNumber in range(0, len(args)):
         if args[argNumber] != None:
@@ -30,10 +30,10 @@ async def logsFabric(
                 continue
             log.append([str(args[argNumber]), 'Ocourred an problem with this value', True])
             
-    ChannelLog = client.get_channel(IdChanneLogs)
+    ChannelLog = _Client.get_channel(_Id_Channel_Logs)
     if (ChannelLog == None):
         print('Inconsistência ao procurar o canal de logs.')
-        await client.close()
+        await _Client.close()
         exit()
     # Criação de um embed com as informações para facilitar visualização
     newEmbed = await makeEmbed(

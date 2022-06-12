@@ -7,9 +7,9 @@ from Features.Discord.Utils.Objects.User import Lazarus_User
 class Secrets:
     __ListOfVariables = {}
     
-    def __init__(self, SecretsPath:str):
+    def __init__(self, _SecretsPath:str):
         import json
-        with open(SecretsPath, 'r') as secrets_json:
+        with open(_SecretsPath, 'r') as secrets_json:
             SecretsJson = json.load(secrets_json)
             # Declaração de variáveis
             self.__ListOfVariables['Token_DiscordBot'] = Lazarus_TokenDiscordBot(SecretsJson["Token_DiscordBot"])

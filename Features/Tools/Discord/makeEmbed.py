@@ -4,30 +4,30 @@ from discord import Embed, Colour
 
 
 async def makeEmbed(
-    title:str,                      # Needed.
-    description:str,                # Needed.
-    author_name:str = '',
-    author_url:str = '',
-    author_icon:str = '',
-    color:Colour = Colour.blurple(),
-    fields:list = None,             # Must be validate every time
-    footer_text:str = 'UTC-6 or CST',
-    footer_iconUrl:str = '',      # The URL of the footer icon. Only HTTP(S) is supported.
-    image:str = '',
-    provider = '',                # What is this? https://discordpy.readthedocs.io/en/stable/api.html#embed
-    thumbnail:str = '',
-    timestamp:datetime = '',
-    type = '',                    # It will be deprecated
-    url:str = '',
-    video:str = ''                # Video isn't the same as Image??
+    _Title:str,                      # Needed.
+    _Description:str,                # Needed.
+    _Author_Name:str = '',
+    _Author_Url:str = '',
+    _Author_Icon:str = '',
+    _Color:Colour = Colour.blurple(),
+    _Fields:list = None,             # Must be validate every time
+    _Footer_Text:str = 'UTC-6 or CST',
+    _Footer_IconUrl:str = '',      # The URL of the footer icon. Only HTTP(S) is supported.
+    _Image:str = '',
+    _Provider = '',                # What is this? https://discordpy.readthedocs.io/en/stable/api.html#embed
+    _Thumbnail:str = '',
+    _Timestamp:datetime = datetime.today(),
+    _Type = '',                    # It will be deprecated
+    _Url:str = '',
+    _Video:str = ''                # Video isn't the same as Image??
 ) -> Embed:
 
-    newEmbed = Embed(title=title, description=description, url=url, timestamp=datetime.today(), colour=color)
-    if await validateEmbedFields(fields) == True:
-        for field in fields:
+    newEmbed = Embed(title=_Title, description=_Description, url=_Url, timestamp=_Timestamp, colour=_Color)
+    if await validateEmbedFields(_Fields) == True:
+        for field in _Fields:
             if field != None : newEmbed.add_field(name = field[0], value = field[1], inline = field[2])
-    if author_name != None : newEmbed.set_author(name = author_name, url = author_url, icon_url = author_icon)
-    if footer_text != None : newEmbed.set_footer(text = footer_text, icon_url = footer_iconUrl)
-    if image != None : newEmbed.set_image(url = image)
-    if thumbnail != None : newEmbed.set_thumbnail(url = thumbnail)
+    if _Author_Name != None : newEmbed.set_author(name = _Author_Name, url = _Author_Url, icon_url = _Author_Icon)
+    if _Footer_Text != None : newEmbed.set_footer(text = _Footer_Text, icon_url = _Footer_IconUrl)
+    if _Image != None : newEmbed.set_image(url = _Image)
+    if _Thumbnail != None : newEmbed.set_thumbnail(url = _Thumbnail)
     return newEmbed
