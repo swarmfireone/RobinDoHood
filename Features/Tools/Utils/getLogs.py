@@ -25,11 +25,15 @@ async def logsFabric(
     log = []
     for argNumber in range(0, len(args)):
         if args[argNumber] != None:
-            log.append([str(args[argNumber]), str(values[argNumber]), False])
+            if values[argNumber] != None:
+                log.append([str(args[argNumber]), str(values[argNumber]), False])
+                continue
+            log.append([str(args[argNumber]), 'Ocourred an problem with this value', True])
             
     ChannelLog = client.get_channel(IdChanneLogs)
     if (ChannelLog == None):
         print('Inconsistência ao procurar o canal de logs.')
+        await client.close()
         exit()
     # Criação de um embed com as informações para facilitar visualização
     newEmbed = await makeEmbed(
