@@ -32,16 +32,16 @@ async def on_ready():
 @Client.event
 async def on_message(message:discord.Message):
     # Para mensagens enviadas pela DM, nem sempre terão Guild
-    if message.guild != None:
-        GuildName = message.guild
-        GuildId = message.guild.id
-    else:
-        GuildName = 'It\'s not a server\'s message'
-        GuildId = 'It\'s a direct message'
+    if message.guild != None : GuildName = message.guild; GuildId = message.guild.id
+    else : GuildName = 'It\'s not a server\'s message'; GuildId = 'It\'s a direct message'
     ChannelName = message.channel
     ChannelId = message.channel.id
     Author = message.author
     AuthorId = message.author.id
+    MessageId = message.id
+    JumpUrl = message.jump_url
+    if message.reference != None : MessageReference = message.reference
+    else : MessageReference = 'There\'s not a Reference field'
     Content = message.content
     Attachments = await readAttachments(message.attachments)
     Embeds = await embedWithinContent(message.embeds)
@@ -57,9 +57,12 @@ async def on_message(message:discord.Message):
                 'ChannelId', ChannelId,
                 'Author', Author,
                 'AuthorId', AuthorId,
+                'MessageId', MessageId,
+                'MessageReference', MessageReference,
                 'Content', Content,
                 'Attachments', Attachments,
-                'Embeds', Embeds
+                'Embeds', Embeds,
+                'JumpUrl', JumpUrl
             )
             if message.content.startswith('$hello'):
                 await message.channel.send('Hello!')
@@ -78,9 +81,12 @@ async def on_message(message:discord.Message):
                 'ChannelId', ChannelId,
                 'Author', Author,
                 'AuthorId', AuthorId,
+                'MessageId', MessageId,
+                'MessageReference', MessageReference,
                 'Content', Content,
                 'Attachments', Attachments,
-                'Embeds', Embeds
+                'Embeds', Embeds,
+                'JumpUrl', JumpUrl
                 )
                 if Content != None and Attachments['Attachments'] == Embeds['Embeds']:
                     await message.channel.send('Message processed with success!')
