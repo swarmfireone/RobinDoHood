@@ -11,7 +11,7 @@ async def makeEmbed(
     author_icon:str = '',
     color:Colour = Colour.blurple(),
     fields:list = None,             # Must be validate every time
-    footer_text:str = '',
+    footer_text:str = 'UTC-6 or CST',
     footer_iconUrl:str = '',      # The URL of the footer icon. Only HTTP(S) is supported.
     image:str = '',
     provider = '',                # What is this? https://discordpy.readthedocs.io/en/stable/api.html#embed
