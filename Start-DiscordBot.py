@@ -30,7 +30,7 @@ async def on_ready():
     
     
 @Client.event
-async def on_message(message):
+async def on_message(message:discord.Message):
     # Para mensagens enviadas pela DM, nem sempre terão Guild
     if message.guild != None:
         GuildName = message.guild
@@ -43,11 +43,12 @@ async def on_message(message):
     Author = message.author
     AuthorId = message.author.id
     Content = message.content
-    Attachment = await readAttachments(message.attachments)
+    Attachments = await readAttachments(message.attachments)
     Embeds = await embedWithinContent(message.embeds)
     
-    if await validateGuild(GuildId, Server_TestServer._Id) or await validateDmUser(AuthorId, Id_UserAdministrator):
-        if message.author != Client.user:
+    if message.author != Client.user:
+        IsGuildOkay = await validateGuild(GuildId, Server_TestServer._Id)
+        if IsGuildOkay:
             await logsFabric(
                 Client, Id_ChannelLogs._Id,
                 'GuildName', GuildName,
@@ -57,18 +58,35 @@ async def on_message(message):
                 'Author', Author,
                 'AuthorId', AuthorId,
                 'Content', Content,
-                'Attachment', Attachment,
-                'Embeds', Embeds['embeds']
+                'Attachments', Attachments,
+                'Embeds', Embeds
             )
-            
             if message.content.startswith('$hello'):
                 await message.channel.send('Hello!')
                 return
             
-            if message.content.startswith('$close'):
+            elif message.content.startswith('$close'):
                 await message.channel.send('Closing the application right away, sir!')
                 await Client.close()
                 return
+        else:
+            IsDmUserOkay = await validateDmUser(AuthorId, Id_UserAdministrator._Id)
+            if IsDmUserOkay:
+                await logsFabric(
+                Client, Id_ChannelLogs._Id,
+                'ChannelName', ChannelName,
+                'ChannelId', ChannelId,
+                'Author', Author,
+                'AuthorId', AuthorId,
+                'Content', Content,
+                'Attachments', Attachments,
+                'Embeds', Embeds
+                )
+                if Content != None and Attachments['Attachments'] == Embeds['Embeds']:
+                    await message.channel.send('Message processed with success!')
+                    await message.channel.send(Content)
+                    return
+                
 
 
 
