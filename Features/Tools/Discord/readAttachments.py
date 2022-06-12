@@ -1,6 +1,5 @@
-from tabnanny import check
 from Features.Tools.Utils.checkType import checkType
-from discord import Message, Attachment
+from discord import Attachment
 
 
 async def readAttachments(_List_Attachments:list[Attachment], _Type = Attachment):

@@ -2,7 +2,7 @@ from discord import Embed
 
 
 async def embedWithinContent(
-    _ListOf_Embeds:list(Embed)
+    _ListOf_Embeds:list[Embed]
 ) -> dict:
     # Lê as informações do message.embeds
     listOfEmbeds = []

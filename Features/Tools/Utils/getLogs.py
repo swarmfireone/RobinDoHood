@@ -37,9 +37,9 @@ async def logsFabric(
         exit()
     # Criação de um embed com as informações para facilitar visualização
     newEmbed = await makeEmbed(
-        title = f'{datetime.datetime.today()}',
-        description = '',
-        fields = log
+        _Title = f'{datetime.datetime.today()}',
+        _Description = '',
+        _Fields = log
     )
     await ChannelLog.send(embed=newEmbed)
     return
