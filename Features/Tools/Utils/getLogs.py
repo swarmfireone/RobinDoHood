@@ -21,11 +21,11 @@ async def logsFabric(
     _Arg14 = None, _Value14 = None
 ) -> None:
     args = [_Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14]
-    values = [_Value1, _Value2, _Value3, _Value4, _Value5, _Value6, _Value7, _Value8, _Value8, _Value9, _Value10, _Value11, _Value12, _Value13, _Value14]
+    values = [_Value1, _Value2, _Value3, _Value4, _Value5, _Value6, _Value7, _Value8, _Value9, _Value10, _Value11, _Value12, _Value13, _Value14]
     log = []
     for argNumber in range(0, len(args)):
         if args[argNumber] != None:
-            if values[argNumber] != None:
+            if values[argNumber] not in (None, ''):
                 log.append([str(args[argNumber]), str(values[argNumber]), False])
                 continue
             log.append([str(args[argNumber]), 'Ocourred an problem with this value', True])
