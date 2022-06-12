@@ -2,7 +2,9 @@ from Features.Tools.Utils.checkType import checkType
 from discord import Attachment
 
 
-async def readAttachments(_List_Attachments:list[Attachment], _Type = Attachment):
+async def readAttachments(
+    _List_Attachments:list[Attachment], _Type = Attachment
+) -> dict:
     ValidateType = await checkType(_List_Attachments, list, True, _Type)
     if ValidateType == False:
         return

@@ -24,5 +24,5 @@ async def embedWithinContent(
                     "Embed_URl" : embed.url,
                     "Embed_Video" : embed.video
                 })
-    dictOfEmbeds = {"counter" : len(listOfEmbeds), "embeds" : listOfEmbeds}
+    dictOfEmbeds = {"counter" : len(listOfEmbeds), "Embeds" : listOfEmbeds}
     return dictOfEmbeds
