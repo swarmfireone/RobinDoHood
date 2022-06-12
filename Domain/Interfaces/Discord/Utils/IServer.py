@@ -1,5 +1,5 @@
 class IServer:
     def __str__(self) -> str:
-        return str(IServer._Id)
-    def Id() -> int:
-        return IServer._Id
+        return str(self._Id)
+    def Id(self) -> int:
+        return self._Id

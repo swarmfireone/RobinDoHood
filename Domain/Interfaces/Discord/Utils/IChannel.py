@@ -1,7 +1,7 @@
 class IChannel:
     def __str__(self) -> str:
-        return str(IChannel._Id)
-    def Server() -> int:
-        return IChannel._Server
-    def Id() -> int:
-        return IChannel._Id
+        return str(self._Id)
+    def Server(self) -> int:
+        return self._Server
+    def Id(self) -> int:
+        return self._Id
