@@ -1,5 +1,6 @@
 from discord import Client
 from Features.Tools.Discord.makeEmbed import makeEmbed
+from Features.Tools.Utils.getMoment import getMoment
 import datetime
 
 
@@ -37,7 +38,7 @@ async def logsFabric(
         exit()
     # Criação de um embed com as informações para facilitar visualização
     newEmbed = await makeEmbed(
-        _Title = f'{datetime.datetime.today()}',
+        _Title = await getMoment(_IsoFormat=True),
         _Description = '',
         _Fields = log
     )

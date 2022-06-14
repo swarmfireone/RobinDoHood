@@ -1,3 +1,4 @@
+from Features.Tools.Utils.getMoment import getMoment
 from Features.Tools.Utils.validateEmbedFields import validateEmbedFields
 from datetime import datetime
 from discord import Embed, Colour
@@ -11,7 +12,7 @@ async def makeEmbed(
     _Author_Icon:str = '',
     _Color:Colour = Colour.blurple(),
     _Fields:list = None,             # Must be validate every time
-    _Footer_Text:str = 'UTC-6 or CST',
+    _Footer_Text:str = await getMoment(_IsoFormat=False),
     _Footer_IconUrl:str = '',      # The URL of the footer icon. Only HTTP(S) is supported.
     _Image:str = '',
     _Provider = '',                # What is this? https://discordpy.readthedocs.io/en/stable/api.html#embed
