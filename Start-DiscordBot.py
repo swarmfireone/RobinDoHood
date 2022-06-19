@@ -1,4 +1,4 @@
-from Domain.Connection.DiscordBot.Secrets.GetSecrets import Secrets
+from Domain.Data.Connection.DiscordBot.Secrets.GetSecrets import Secrets
 import discord, tracemalloc
 from Features.Tools.Discord.readAttachments import readAttachments
 from Features.Tools.Utils.getLogs import logsFabric
