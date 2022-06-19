@@ -1,6 +1,6 @@
 from Features.Discord.Utils.Objects.Channel import Lazarus_Channel
 from Features.Discord.Utils.Objects.Server import Lazarus_Server
-from Domain.Connection.DiscordBot.Secrets.Objects.TokenDiscordBot import Lazarus_TokenDiscordBot
+from Domain.Data.Connection.DiscordBot.Secrets.Objects.TokenDiscordBot import Lazarus_TokenDiscordBot
 from Features.Discord.Utils.Objects.User import Lazarus_User
 
 
