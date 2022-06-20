@@ -29,6 +29,9 @@ async def logsFabric(
             if values[argNumber] not in (None, ''):
                 log.append([str(args[argNumber]), str(values[argNumber]), False])
                 continue
+            elif args[argNumber] == 'Content' and values[argNumber] in (None, ''):
+                log.append([str(args[argNumber]), 'There\'s no content', True])
+                continue
             log.append([str(args[argNumber]), 'Ocourred an problem with this value', True])
             
     ChannelLog = _Client.get_channel(_Id_Channel_Logs)
