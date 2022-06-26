@@ -1,5 +1,7 @@
-#### "Hood" gíria para bairros / guetos.
+# Bot para a batcaverna do @devpobrerico
 
-## Bot para a batcaverna do @devpobrerico e disponível a todos para criticarem, descerem a lenha, opinarem e às vezes ajudarem com o projeto também hahaha.
+## Disponível a todos para opinarem e ajudaram com o projeto!
+
+### Em dúvidas, me envia uma mensagem no discord Swarmfire#7792
 
 ### Quer contribuir? Sobe aquele PR!
